@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tip Calculator</title>
+</head>
+<link rel="stylesheet" href="styles.css">
+
+<body>
+    <div class="container">
+        <h1>Tip Calculator</h1>
+
+        <div class="billamount">
+            <label for="billAmount">Bill Amount:</label>
+            <input type="number" id="billAmount" step="0.01" required><br><br>
+        </div>
+
+        <div class="tippercentage">
+            <label for="tipPercentage">Tip Percentage:</label>
+            <input type="number" id="tipPercentage" step="0.01" required><br><br>
+        </div>
+
+
+        <button class="button" onclick="calculateTip()">Calculate Tip</button>
+
+        <p id="tipAmount"></p>
+
+        <p><center>&copy; Advait Gogte | Liberty University Submission</center></p>
+    </div>
+
+    <script>
+        function calculateTip() {
+            // Get the values entered by the user
+            var billAmount = parseFloat(document.getElementById("billAmount").value);
+            var tipPercentage = parseFloat(document.getElementById("tipPercentage").value);
+
+            // Check for valid input
+            if (isNaN(billAmount) || isNaN(tipPercentage) || billAmount <= 0 || tipPercentage < 0) {
+                alert("Please check the input values.")
+                return;
+            }
+
+            // Calculate the tip amount
+            var tip = (billAmount * tipPercentage) / 100;
+
+            // Display the tip amount
+            document.getElementById("tipAmount").innerHTML = "Tip Amount: $" + tip.toFixed(2);
+        }
+    </script>
+</body>
+</html>
